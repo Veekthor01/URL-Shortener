@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('../db');
+const pool = require('../DB/db');
 const validUrl = require('valid-url');
 
 const baseURL = 'http://localhost:3000';
