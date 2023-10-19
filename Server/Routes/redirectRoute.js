@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('../db');
+const pool = require('../DB/db');
 
 router.get('/:short_id', async (req, res) => {
     try {
