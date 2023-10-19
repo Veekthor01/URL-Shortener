@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
-const urlRoute = require('./urlRoute');
-const redirectRoute = require('./redirectRoute');
-const customRoute = require('./customRoute');
+const urlRoute = require('./Routes/urlRoute');
+const redirectRoute = require('./Routes/redirectRoute');
+const customRoute = require('./Routes/customRoute');
 
 const PORT = process.env.PORT || 3000;
 
