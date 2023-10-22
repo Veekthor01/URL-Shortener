@@ -2,26 +2,36 @@
 .tooltip {
     position: relative;
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     background-color: #0078D4; /* Background color of the tooltip icon */
     color: #fff; /* Text color of the tooltip icon */
     border-radius: 50%;
     cursor: pointer;
+    margin-left: 4px;
+  }
+  
+  @media screen and (max-width: 790px) {
+    .tooltip {
+      display: none;
+    }
   }
   
   .tooltip-text {
     visibility: hidden;
-    width: 200px; /* Adjust the width as needed */
+    display: inline-block;
+    width: 225px;
+    font-size: 14px;
     background-color: #333;
     color: #fff;
-    text-align: center;
+    text-align: left;
+    line-height: 1.4;
     border-radius: 5px;
-    padding: 10px;
+    padding: 2px;
     position: absolute;
     z-index: 1;
-    right: 50px;
-    bottom: 40%;
+    right: 90px;
+    bottom: 60%;
     opacity: 0;
     transition: opacity 0.3s;
   }
