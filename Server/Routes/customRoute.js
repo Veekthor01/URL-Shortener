@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../DB/db');
 
-router.get('/custom/:custom_url', async (req, res) => {
+router.get('/:/:custom_url', async (req, res) => {
     try {
         const { custom_url } = req.params;
         const result = await pool.query(
