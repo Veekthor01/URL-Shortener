@@ -1,0 +1,153 @@
+openapi: 3.0.1
+info:
+  title: Shortly URL Shortener API
+  version: 1.0.0
+  description: This API allows you to shorten and redirect long URLs.
+paths:
+  /url:
+    post:
+      summary: Shorten a long URL
+      description: Accepts the valid long URL and generates a short URL
+      parameters:
+        - name: long_url
+          in: query
+          required: true
+          schema:
+            type: string
+            maxLength: 2000
+          description: Valid long URL (maximum 2000 characters).
+        - name: custom_url
+          in: query
+          required: false
+          schema:
+            type: string
+            maxLength: 200
+          description: (Optional) Custom short URL. If not provided, a short URL will be generated. (maximum 200 characters).
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - long_url
+              properties:
+                long_url:
+                  type: string
+                  example: https://editor.swagger.io/?_ga=2.189620847.538489420.1698063444
+                custom_url:
+                  type: string
+                  description: (Optional) Custom short URL. If not provided, a short URL will be generated.
+                  example: swagger editor
+      responses:
+        '200':
+          description: The shortened URL without specifying a custom URL
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  short_url:
+                    type: string
+                    example: shortly/ahsjr476b
+        '201':
+          description: The shortened URL with a custom URL.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  short_url:
+                    type: string
+                    example: shortly/:/swagger editor
+        '400':
+          description: Bad Request!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Invalid long URL
+        '500':
+          description: Internal Server Error!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: URL insertion error
+      tags:
+        - Long URL
+  /{short_id}:
+    get:
+      summary: Redirect to Long URL
+      description: Redirect to the long URL associated with the given short URL.
+      parameters:
+        - in: path
+          name: short_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '302':
+          description: Redirected to the original URL.
+        '404':
+          description: URL not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: URL not found
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Redirection error
+      tags:
+        - Short URL
+  /:{custom_url}:
+    get:
+      summary: Redirect to Long URL (Custom)
+      description: Redirect to the long URL associated with the given custom URL.
+      parameters:
+        - in: path
+          name: custom_url
+          required: true
+          schema:
+            type: string
+      responses:
+        '302':
+          description: Redirected to the original URL.
+        '404':
+          description: URL not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: URL not found
+        '500':
+          description: Internal Server Error.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Custom URL handling error
+      tags:
+        - Custom URL
