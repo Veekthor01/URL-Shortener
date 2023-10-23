@@ -48,7 +48,7 @@ paths:
                 properties:
                   short_url:
                     type: string
-                    example: shortly/ahsjr476b
+                    example: shortly/ahsjr47b
         '201':
           description: The shortened URL with a custom URL.
           content:
