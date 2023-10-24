@@ -7,6 +7,7 @@ const baseURL = 'http://localhost:5000';
 
 router.post('/', async (req, res) => {
     try {
+        // Get the long URL and custom URL from the request body
         const { long_url, custom_url } = req.body;
         const { nanoid } = await import('nanoid'); // Import nanoid dynamically because it is an ESM module
         let short_url;
