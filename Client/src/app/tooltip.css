@@ -1,11 +1,10 @@
-/* Add this to your CSS or stylesheet */
 .tooltip {
     position: relative;
     display: inline-block;
     width: 22px;
     height: 22px;
-    background-color: #0078D4; /* Background color of the tooltip icon */
-    color: #fff; /* Text color of the tooltip icon */
+    background-color: #0078D4; 
+    color: #fff;
     border-radius: 50%;
     cursor: pointer;
     margin-left: 4px;
