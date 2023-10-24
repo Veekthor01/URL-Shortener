@@ -1,5 +1,5 @@
 export default async function createShortUrl (long_url, custom_url) {
-    const url = 'http://localhost:5000/url'; // replace with your backend URL
+    const url = 'http://localhost:5000/url';
     const options = {
         method: 'POST',
         headers: {
@@ -15,7 +15,7 @@ export default async function createShortUrl (long_url, custom_url) {
         const response = await fetch(url, options);
         if (!response.ok) {
             const errorMessage = await response.json();
-            throw new Error(errorMessage.error); // Throw an error with the error message from the server
+            throw new Error(errorMessage.error);
           }
         const data = await response.json();
         return data.short_url;
