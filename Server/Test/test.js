@@ -13,8 +13,6 @@ jest.mock('../DB/db', () => ({
   }
 }));
 
-app.use(express.json()); // Add this line to parse JSON requests
-
 app.use('/url', urlRoute);
 app.use('/', redirectRoute);
 app.use('/', customRoute);
