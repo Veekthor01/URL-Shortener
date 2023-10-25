@@ -10,7 +10,7 @@ export default async function createShortUrl (long_url, custom_url) {
             custom_url,
         }),
     };
-
+    // Send a POST request to the server with the long_url and custom_url
     try {
         const response = await fetch(url, options);
         if (!response.ok) {
