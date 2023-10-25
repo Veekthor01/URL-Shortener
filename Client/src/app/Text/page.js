@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function UrlPage() {
     return (
         <div className="w-4/5 mx-auto flex flex-col justify-center items-center mt-6">
