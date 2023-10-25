@@ -13,6 +13,7 @@ export default function Home() {
   const [isCopied, setIsCopied] = useState(false);
   const [error, setError] = useState("");
 
+  // function to shorten the long url
   const shortenLongUrl = async () => {
     try {
       const shortenedUrl = await createShortUrl(longUrl, customUrl);
@@ -24,6 +25,7 @@ export default function Home() {
     }
   };  
 
+// Copy to clipboard function 
 const handleCopy = () => {
   setIsCopied(true);
   setTimeout(() => {
