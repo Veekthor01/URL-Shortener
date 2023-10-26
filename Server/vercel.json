@@ -12,12 +12,16 @@
         "dest": "/server.js"
       },
       {
+        "src": "/",
+        "dest": "/Routes/urlRoute.js"
+      },
+      {
         "src": "/:short_id",
-        "dest": "/server.js"
+        "dest": "/Routes/redirectRoute.js"
       },
       {
         "src": "/c/:custom_url",
-        "dest": "/server.js"
+        "dest": "/Routes/customRoute.js"
       }
       ]
   }
