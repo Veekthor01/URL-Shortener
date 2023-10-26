@@ -1,5 +1,5 @@
 export default async function createShortUrl (long_url, custom_url) {
-    const url = 'shorrtly.vercel.app/url';
+    const url = 'https://shorrtly.vercel.app/url';
     const options = {
         method: 'POST',
         headers: {

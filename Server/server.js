@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({ origin: 'shorrtly.vercel.app' }));
+app.use(cors());
 app.use(morgan('dev'));
 
 app.get('/', (req, res) => {
