@@ -21,7 +21,7 @@ describe('Long URL', () => {
   it('should shorten a URL', async () => {
     const mockURL = {
       long_url: 'https://www.google.com',
-      short_url: 'https://shorrtly.vercel.app/ahdfrtvx',
+      short_url: 'http://localhost:5000/ahdfrtvx',
       custom_url: null,
       short_id: 'ahdfrtvx'
     };

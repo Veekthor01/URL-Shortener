@@ -20,10 +20,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(morgan('dev'));
 
-app.get('/', (req, res) => {
-    res.send('Hey this is my API running 🥳')
-  })
-
 app.use('/url', urlRoute);
 app.use('/', redirectRoute);
 app.use('/', customRoute);
