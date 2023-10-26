@@ -10,10 +10,6 @@
         {
           "source": "/:short_id",
           "destination": "https://shorrtly.vercel.app/:short_id"
-        },
-        {
-          "source": "/c/:custom_url",
-          "destination": "https://shorrtly.vercel.app/c/:custom_url"
         }
       ]
   }
