@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require('../DB/db');
 const validUrl = require('valid-url');
 
-const baseURL = 'https://shorrtly.vercel.app';
+const baseURL = 'http://localhost:5000';
 
 router.post('/', async (req, res) => {
     try {
