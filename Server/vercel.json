@@ -11,5 +11,15 @@
         "src": "/(.*)",
         "dest": "/server.js"
       }
-    ]
+    ],
+    "redirects": [
+        {
+          "source": "/:short_id",
+          "destination": "https://shorrtly.vercel.app/:short_id"
+        },
+        {
+          "source": "/:/:custom_url",
+          "destination": "https://shorrtly.vercel.app/:/:custom_url"
+        }
+      ]
   }
