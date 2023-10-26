@@ -8,11 +8,19 @@
   ],
   "routes": [
     {
-      "src": "^/url",
+      "src": "/(.*)",
       "dest": "/server.js"
     },
     {
-      "src": "^/([^/]+)",
+      "src": "/url",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/:short_id",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/:/:custom_url",
       "dest": "/server.js"
     }
   ]
