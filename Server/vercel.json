@@ -6,22 +6,14 @@
         "use": "@vercel/node"
       }
     ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/server.js"
-      },
-      {
-        "src": "/",
-        "dest": "/Routes/urlRoute.js"
-      },
-      {
-        "src": "/:short_id",
-        "dest": "/Routes/redirectRoute.js"
-      },
-      {
-        "src": "/c/:custom_url",
-        "dest": "/Routes/customRoute.js"
-      }
+    "redirects": [
+        {
+          "source": "/:short_id",
+          "destination": "https://shorrtly.vercel.app/:short_id"
+        },
+        {
+          "source": "/c/:custom_url",
+          "destination": "https://shorrtly.vercel.app/c/:custom_url"
+        }
       ]
   }
