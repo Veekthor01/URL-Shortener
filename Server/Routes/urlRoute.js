@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
                 return res.status(400).json({ error: 'Custom URL already in use' });
             }
             // Use the custom URL as the short URL
-            short_url = `${baseURL}/:/${custom_url}`;
+            short_url = `${baseURL}/c/${custom_url}`;
         } else {
             // Generate a short URL using nanoid
             short_url = `${baseURL}/${short_id}`;
