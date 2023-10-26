@@ -12,7 +12,7 @@
           "destination": "https://shorrtly.vercel.app/:short_id"
         },
         {
-          "source": "/:/:custom_url",
+          "source": "/c/:custom_url",
           "destination": "https://shorrtly.vercel.app/c/:custom_url"
         }
       ]
