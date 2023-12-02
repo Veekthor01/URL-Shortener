@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({ origin: '*' }));
 app.use(morgan('dev'));
 
 // Use your database connection in routes and controllers
