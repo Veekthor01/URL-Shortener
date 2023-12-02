@@ -29,10 +29,7 @@ router.post('/', async (req, res) => {
         };
         // Check if the custom URL is already in use
         if (custom_url) {
-            const existingUrl = await sql.query(
-                `SELECT short_url FROM url WHERE custom_url = $1`,
-                [custom_url]
-            );
+            const existingUrl = await sql`SELECT short_url FROM url WHERE custom_url = ${custom_url}`;
             if (existingUrl.rows.length > 0) {
                 return res.status(400).json({ error: 'Custom URL already in use' });
             }
@@ -43,10 +40,7 @@ router.post('/', async (req, res) => {
             short_url = `${baseURL}/${short_id}`;
         };
         // Insert the URL into the database
-        const newUrl = await sql.query(
-            `INSERT INTO url (long_url, short_url, custom_url, short_id) VALUES ($1, $2, $3, $4) RETURNING short_url`,
-            [long_url, short_url, custom_url, short_id]
-        );
+        const newUrl = await sql`INSERT INTO url (long_url, short_url, custom_url, short_id) VALUES (${long_url}, ${short_url}, ${custom_url}, ${short_id}) RETURNING *`;
         res.json(newUrl.rows[0]);
     } catch (error) {
         console.error('URL insertion error:', error.message);

@@ -7,10 +7,7 @@ router.get('/:short_id', async (req, res) => {
         // Get the short URL from the request parameters
         const { short_id } = req.params;
         // Get the long URL from the database using the short URL
-        const result = await sql.query(
-            `SELECT long_url FROM url WHERE short_id = $1`,
-            [short_id]
-        );
+        const result = await sql`SELECT long_url FROM url WHERE short_id = ${short_id}`;
         // If the long URL is found, redirect to it
         if (result.rows.length > 0) {
             return res.redirect(result.rows[0].long_url);
