@@ -35,12 +35,12 @@ const handleCopy = () => {
 
   return (
     <main className="mt-8 min-h-screen">
-      <div className="text-center text-3xl md:text-4xl font-bold text-blue-500">
+      <div className="text-center text-3xl tracking-wide leading-normal md:text-4xl font-bold text-blue-500">
         <h1>SHORT<span className="text-slate-700">LY</span></h1>
       </div>
 
       <div className="w-4/5 mx-auto flex flex-col justify-center items-center mt-5 bg-white rounded-md shadow-md">
-      <div className="text-center text-2xl md:text-3xl mt-3 font-bold text-slate-700">
+      <div className="text-center tracking-wide leading-normal text-2xl md:text-3xl mt-3 font-bold text-slate-700">
         <h2>Paste the long URL to shorten it</h2>
       </div>
     <div className="w-full flex flex-row justify-center items-center my-4">

@@ -1,19 +1,26 @@
 const { Pool } = require('pg');
 require('dotenv').config();
 
-const user = process.env.DB_USER;
+const username = process.env.DB_USERNAME;
 const host = process.env.DB_HOST;
-const database = process.env.DB_DATABASE;
+const PGDatabase = process.env.DB_DATABASE;
 const password = process.env.DB_PASSWORD;
 const port = process.env.DB_PORT;
+const ENDPOINT_ID = process.env.ENDPOINT_ID;
 
-// Create a new connection pool
+const database = decodeURIComponent(PGDatabase); // Decode the database URI
+
+// Create a new connection pool (Neon.tech)
 const pool = new Pool({
-    user: user,
+    username: username,
     host: host,
     database: database,
     password: password,
     port: port,
+    ssl: 'require', // This is for production only
+    connection: {
+        options: `project=${ENDPOINT_ID}`,
+      },
 });
 
 // Log successful connection

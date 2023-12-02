@@ -4,8 +4,9 @@ const app = express();
 const urlRoute = require('../Routes/urlRoute');
 const redirectRoute = require('../Routes/redirectRoute');
 const customRoute = require('../Routes/customRoute');
-
+require('dotenv').config();
 // Import your database connection here, e.g., your pool from ../DB/db
+const baseURL = process.env.BACKEND_URL;
 
 jest.mock('../DB/db', () => ({
   pool: {
@@ -21,7 +22,7 @@ describe('Long URL', () => {
   it('should shorten a URL', async () => {
     const mockURL = {
       long_url: 'https://www.google.com',
-      short_url: 'http://localhost:5000/ahdfrtvx',
+      short_url: `${baseURL}/:/${expect.any(String)}`,
       custom_url: null,
       short_id: 'ahdfrtvx'
     };

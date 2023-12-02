@@ -1,5 +1,7 @@
+const baseURL = process.env.BACKEND_URL;
+
 export default async function createShortUrl (long_url, custom_url) {
-    const url = 'http://localhost:5000/url';
+    const url = `${baseURL}/url`;
     const options = {
         method: 'POST',
         headers: {
