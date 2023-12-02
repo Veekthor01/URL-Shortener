@@ -9,6 +9,8 @@ const customRoute = require('./Routes/customRoute');
 
 const PORT = process.env.PORT || 5000;
 
+app.set('trust proxy', 1);
+
 const corsOptions = {
   origin: '*',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
