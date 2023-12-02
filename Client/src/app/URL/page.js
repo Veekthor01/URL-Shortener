@@ -1,4 +1,4 @@
-const baseURL = process.env.BACKEND_URL;
+const baseURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 export default async function createShortUrl (long_url, custom_url) {
     const url = `${baseURL}/url`;
