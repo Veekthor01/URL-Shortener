@@ -17,11 +17,10 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors(
-  {
-    origin: '*',
-  }
-));
+const corsOptions = {
+  origin: 'https://shorrtly-url.vercel.app'
+}
+app.use(cors(corsOptions));
 app.use(morgan('dev'));
 
 app.get('/', (req, res) => {
