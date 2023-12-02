@@ -1,4 +1,4 @@
-const { Pool } = require('pg');
+const postgres = require('postgres');
 require('dotenv').config();
 
 const username = process.env.DB_USERNAME;
@@ -10,8 +10,8 @@ const ENDPOINT_ID = process.env.ENDPOINT_ID;
 
 const database = decodeURIComponent(PGDatabase); // Decode the database URI
 
-// Create a new connection pool (Neon.tech)
-const pool = new Pool({
+// Create connection to database (Neon.tech)
+const sql = postgres({
     username: username,
     host: host,
     database: database,
@@ -23,15 +23,11 @@ const pool = new Pool({
       },
 });
 
-// Log successful connection
-pool.on('connect', () => {
-    console.log('Database pool connected');
-});
+async function getPgVersion() {
+  const result = await sql`SELECT version()`;
+  console.log(result);
+}
 
-// Handle connection errors
-pool.on('error', (err, client) => {
-    console.error('Database pool error:', err);
-    process.exit(-1);
-  });
+getPgVersion();
 
-module.exports = pool;
+module.exports = sql;

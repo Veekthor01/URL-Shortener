@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('../DB/db');
+const sql = require('../DB/db');
 
 router.get('/:short_id', async (req, res) => {
     try {
         // Get the short URL from the request parameters
         const { short_id } = req.params;
         // Get the long URL from the database using the short URL
-        const result = await pool.query(
+        const result = await sql.query(
             `SELECT long_url FROM url WHERE short_id = $1`,
             [short_id]
         );

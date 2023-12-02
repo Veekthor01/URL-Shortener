@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('../DB/db');
+const sql = require('../DB/db');
 const validUrl = require('valid-url');
 require('dotenv').config();
 
@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
         };
         // Check if the custom URL is already in use
         if (custom_url) {
-            const existingUrl = await pool.query(
+            const existingUrl = await sql.query(
                 `SELECT short_url FROM url WHERE custom_url = $1`,
                 [custom_url]
             );
@@ -43,7 +43,7 @@ router.post('/', async (req, res) => {
             short_url = `${baseURL}/${short_id}`;
         };
         // Insert the URL into the database
-        const newUrl = await pool.query(
+        const newUrl = await sql.query(
             `INSERT INTO url (long_url, short_url, custom_url, short_id) VALUES ($1, $2, $3, $4) RETURNING short_url`,
             [long_url, short_url, custom_url, short_id]
         );

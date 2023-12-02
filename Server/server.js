@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const cors = require('cors');
-const pool = require('./DB/db');
+const sql = require('./DB/db');
 const urlRoute = require('./Routes/urlRoute');
 const redirectRoute = require('./Routes/redirectRoute');
 const customRoute = require('./Routes/customRoute');
@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000;
 
 // Use your database connection in routes and controllers
 app.use((req, res, next) => {
-    req.pool = pool;// Make the database connection available in the request object
+    req.sql = sql;// Make the database connection available in the request object
     next();
 });
 

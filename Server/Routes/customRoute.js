@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('../DB/db');
+const sql = require('../DB/db');
 
 router.get('/:/:custom_url', async (req, res) => {
     try {
         // Get the custom URL from the request parameters
         const { custom_url } = req.params;
         // Get the long URL from the database using the custom URL
-        const result = await pool.query(
+        const result = await sql.query(
             `SELECT long_url FROM url WHERE custom_url = $1`,
             [custom_url]
         );

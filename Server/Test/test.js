@@ -5,11 +5,11 @@ const urlRoute = require('../Routes/urlRoute');
 const redirectRoute = require('../Routes/redirectRoute');
 const customRoute = require('../Routes/customRoute');
 require('dotenv').config();
-// Import your database connection here, e.g., your pool from ../DB/db
+
 const baseURL = process.env.BACKEND_URL;
 
 jest.mock('../DB/db', () => ({
-  pool: {
+  sql: {
     connect: jest.fn()
   }
 }));
@@ -32,8 +32,8 @@ describe('Long URL', () => {
     };
     
     // Mock the database connection
-    const pool = require('../DB/db');
-    pool.pool.connect.mockImplementation(() => dbInstance);
+    const sql = require('../DB/db');
+    sql.sql.connect.mockImplementation(() => dbInstance);
 
     // Send a POST request to your API
     const res = await request(app)
