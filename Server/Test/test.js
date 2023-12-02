@@ -39,7 +39,7 @@ describe('Long URL', () => {
     const res = await request(app)
       .post('/url')
       .send({
-        long_url: 'https://www.google.com' // Use "long_url" instead of "longUrl"
+        long_url: 'https://www.google.com'
       });
 
     // Verify the response

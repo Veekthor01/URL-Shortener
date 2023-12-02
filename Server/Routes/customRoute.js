@@ -9,8 +9,8 @@ router.get('/:/:custom_url', async (req, res) => {
         // Get the long URL from the database using the custom URL
         const result = await sql`SELECT long_url FROM url WHERE custom_url = ${custom_url}`;
         // If the long URL is found, redirect to it
-        if (result.rows.length > 0) {
-            return res.redirect(result.rows[0].long_url);
+        if (result && result.length > 0) {
+            return res.redirect(result[0].long_url);
         } else {
             res.status(404).json({ error: 'URL not found' });
         }
