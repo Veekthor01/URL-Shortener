@@ -17,7 +17,7 @@ const sql = postgres({
     database: database,
     password: password,
     port: port,
-    ssl: 'require', // This is for production only
+    ssl: 'require',
     connection: {
         options: `project=${ENDPOINT_ID}`,
       },
