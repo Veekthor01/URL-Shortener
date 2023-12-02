@@ -9,19 +9,16 @@ const customRoute = require('./Routes/customRoute');
 
 const PORT = process.env.PORT || 5000;
 
-// Use your database connection in routes and controllers
-app.use((req, res, next) => {
-    req.sql = sql;// Make the database connection available in the request object
-    next();
-});
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-const corsOptions = {
-  origin: 'https://shorrtly-url.vercel.app'
-}
-app.use(cors(corsOptions));
+app.use(cors({origin: '*'}));
 app.use(morgan('dev'));
+
+// Use your database connection in routes and controllers
+app.use((req, res, next) => {
+  req.sql = sql;// Make the database connection available in the request object
+  next();
+});
 
 app.get('/', (req, res) => {
   res.send('Hey this is my API running 🥳')
