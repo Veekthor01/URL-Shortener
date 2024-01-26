@@ -24,8 +24,8 @@ router.post('/', async (req, res) => {
             return res.status(400).json({ error: 'URL cannot exceed 2000 characters' });
         };
         // Check if the custom URL exceeds 100 characters
-        if (custom_url && custom_url.length > 200) {
-            return res.status(400).json({ error: 'Custom URL cannot exceed 200 characters' });
+        if (custom_url && custom_url.length > 100) {
+            return res.status(400).json({ error: 'Custom URL cannot exceed 100 characters' });
         };
         // Check if the custom URL is already in use
         if (custom_url) {
