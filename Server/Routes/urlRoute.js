@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
         const { long_url, custom_url } = req.body;
         const { nanoid } = await import('nanoid'); // Import nanoid dynamically because it is an ESM module
         let short_url;
-        let short_id = nanoid(8);
+        let short_id = nanoid(5);
         // Check if the long URL is valid
         if (validUrl.isUri(long_url)) {
             console.log('Valid long URL');
@@ -34,10 +34,10 @@ router.post('/', async (req, res) => {
                 return res.status(400).json({ error: 'Custom URL already in use' });
             }
             // Use the custom URL as the short URL
-            short_url = `${baseURL}/:/${custom_url}`;
+            short_url = `${baseURL.replace('https://', '')}/c/${custom_url}`;
         } else {
             // Generate a short URL using nanoid
-            short_url = `${baseURL}/${short_id}`;
+            short_url = `${baseURL.replace('https://', '')}/${short_id}`;
         };
         // Insert the URL into the database
         const newUrl = await sql`INSERT INTO url (long_url, short_url, custom_url, short_id) VALUES (${long_url}, ${short_url}, ${custom_url}, ${short_id}) RETURNING *`;

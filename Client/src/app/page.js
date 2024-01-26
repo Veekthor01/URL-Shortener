@@ -71,7 +71,7 @@ const handleCopy = () => {
         <h3 className="text-gray-700">Enter a custom URL (optional)</h3>
         <span className="tooltip">?</span>
         <div className="tooltip-text">
-          Add your own words as the short link (e.g., "shortly/my_brand" instead of "shortly/XwKt8QJk")
+          Add your own words as the short link (e.g., "shortly/my_brand" instead of "shortly/XwKt8Q")
           </div>
       </div>
     </div>
